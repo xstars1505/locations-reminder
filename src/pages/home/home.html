@@ -5,13 +5,20 @@
 </ion-header>
 
 <ion-content padding>
-  <h2>Welcome to Ionic!</h2>
-  <p>
-    This starter project comes with simple tabs-based layout for apps
-    that are going to primarily use a Tabbed UI.
-  </p>
-  <p>
-    Take a look at the <code>src/pages/</code> directory to add or change tabs,
-    update any existing page or create new pages.
-  </p>
+  <agm-map
+    [latitude]="lat"
+    [longitude]="lng"
+    (mapClick)="mapClicked($event)">
+    <agm-marker
+      *ngFor="let location of locations | async"
+      [latitude]="location.lat"
+      [longitude]="location.lng"
+      [markerDraggable]="location.draggable"
+      (dragEnd)="markerDragEnd(location, $event)">
+      <agm-info-window
+        [isOpen]="true">
+        {{location.label}}
+      </agm-info-window>
+    </agm-marker>
+  </agm-map>
 </ion-content>
