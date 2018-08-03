@@ -11,7 +11,7 @@
     </ion-buttons>
   </ion-toolbar>
 </ion-header>
-<ion-content>
+<ion-content padding>
   <form [formGroup]="form" (ngSubmit)="updateLocation(form.value)">
     <ion-item>
       <ion-label stacked>Location name:</ion-label>
@@ -20,19 +20,12 @@
         formControlName="name"></ion-input>
     </ion-item>
 
-    <ion-item>
-      <input
-        type="hidden"
-        name="movieId" >
-
-      <button
-        ion-button
-        block
-        color="primary"
-        text-center
-        [disabled]="!form.valid">
-        Update
-      </button>
-    </ion-item>
+    <button
+      type="submit"
+      ion-button
+      block
+      [disabled]="!form.valid">
+      Update
+    </button>
   </form>
 </ion-content>

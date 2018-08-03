@@ -7,10 +7,12 @@
 <ion-content padding>
   <agm-map
     [latitude]="lat"
+    [zoom]="12"
     [longitude]="lng"
     (mapClick)="mapClicked($event)">
     <agm-marker
       *ngFor="let location of locations | async"
+      (markerClick)="clickedMarker(location)"
       [latitude]="location.lat"
       [longitude]="location.lng"
       [markerDraggable]="location.draggable"
